@@ -2,8 +2,8 @@ let canvas=document.getElementById("areaJuego");
 let ctx=canvas.getContext("2d");
 
 const ALTURA_SUELO=20;
-const ALTURA_PERSONAJE=60;
-const ANCHO_PERSONAJE=40;
+const ALTURA_PERSONAJE=30;
+const ANCHO_PERSONAJE=60;
 const ANCHO_LIMON=20;
 const ALTO_LIMON=20;
 
@@ -12,11 +12,12 @@ let personajeY=canvas.height-(ALTURA_SUELO+ALTURA_PERSONAJE)
 let limonX=canvas.width/2;
 let limonY=0;
 let puntaje=0;
-let vidas=3;
-let velocidaCaida=100;
+let vidas=5;
+let interval;
+let velocidaCaida=200;
 
 function iniciarJuego(){
-    setInterval(bajarLimon,velocidaCaida)
+    interval=setInterval(bajarLimon,velocidaCaida)
     dibujarSuelo();
     dibujarPersonaje();
     aparecerLimon();
@@ -65,13 +66,32 @@ function bajarLimon(){
     detectarColicion(); 
     detectarPiso();
 }
+
+function cambiarVelocidad(nuevaVelocidad){
+    clearInterval(interval);
+    velocidaCaida=nuevaVelocidad;
+    interval = setInterval(bajarLimon,velocidaCaida);
+}
 function detectarColicion(){
     if(limonX+ANCHO_LIMON>personajeX && limonX < personajeX+ANCHO_PERSONAJE && limonY+ALTO_LIMON>personajeY && limonY < personajeY+ALTURA_PERSONAJE){
         aparecerLimon();
         puntaje=puntaje+1;
         let componente=document.getElementById("txtPuntaje");
         componente.textContent=puntaje;
-    }   
+        if (puntaje == 3){
+        cambiarVelocidad(150);
+        }
+        if (puntaje == 6) {
+        cambiarVelocidad(100);
+        }
+        if (puntaje== 10 ){
+            alert("ganaste, ya pueders hacer limonada")
+        }
+        
+    }
+   
+     
+    
 }
 
 function probarAleatorio9(){
