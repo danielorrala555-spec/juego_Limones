@@ -85,7 +85,8 @@ function detectarColicion(){
         cambiarVelocidad(100);
         }
         if (puntaje== 10 ){
-            alert("ganaste, ya pueders hacer limonada")
+            alert("ganaste, ya pueders hacer limonada");
+            clearInterval(interval);
         }
         
     }
@@ -112,6 +113,7 @@ function detectarPiso(){
         componente.textContent=vidas;
         if (vidas==0){
             alert("GAME OVER");
+            clearInterval(interval);
 
         }
     }
