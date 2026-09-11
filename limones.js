@@ -5,6 +5,8 @@ let alturaSuelo = 50;
 let puntaje = 0;
 const ALTURA_PERSONAJE = 40;
 const ANCHO_PERSONAJE = 40;
+let personajeX = canvas.width / 2 - ANCHO_PERSONAJE / 2;
+let personajeY = canvas.height - alturaSuelo - ALTURA_PERSONAJE;
 
 function iniciar(){
     dibujarSuelo();
@@ -19,5 +21,19 @@ function dibujarSuelo(){
 function dibujarPersonaje(){
     ctx.fillStyle = "#c73232";
     ctx.font = "20px Arial";
-    ctx.fillRect(canvas.width / 2 - ANCHO_PERSONAJE / 2, canvas.height - alturaSuelo - ALTURA_PERSONAJE, ANCHO_PERSONAJE, ALTURA_PERSONAJE);
+    ctx.fillRect(personajeX, personajeY, ANCHO_PERSONAJE, ALTURA_PERSONAJE);
+}
+
+function moverDerecha(){
+    personajeX += 10;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dibujarSuelo();
+    dibujarPersonaje();
+}
+
+function moverIzquierda(){
+    personajeX -= 10;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dibujarSuelo();
+    dibujarPersonaje();
 }
