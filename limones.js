@@ -26,14 +26,22 @@ function dibujarPersonaje(){
 
 function moverDerecha(){
     personajeX += 10;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    dibujarSuelo();
-    dibujarPersonaje();
+    actualizarPantalla();
 }
 
 function moverIzquierda(){
     personajeX -= 10;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    actualizarPantalla();
+}
+
+function actualizarPantalla(){
+    limpiarPantalla();
     dibujarSuelo();
     dibujarPersonaje();
+
+}
+
+function limpiarPantalla(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
 }
