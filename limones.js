@@ -13,12 +13,17 @@ let limonX = canvas.width / 2 - ANCHO_LIMON / 2;
 let limonY = 0;
 let vidas = 3;
 let velocidadLimon = 200;
+let intervaloLimon;
 
 function iniciar(){
-    setInterval(bajarLimon, velocidadLimon);
+    intervaloLimon = setInterval(bajarLimon, velocidadLimon);
     dibujarSuelo();
     dibujarPersonaje();
     dibujarLimon();
+}
+function crearIntervaloLimon(){
+    clearInterval(intervaloLimon);
+    intervaloLimon = setInterval(bajarLimon, velocidadLimon);
 }
 
 function dibujarSuelo(){
@@ -74,8 +79,29 @@ function bajarLimon(){
 function detectarAtrapado(){
     if(limonY + ALTURA_LIMON >= personajeY && limonX + ANCHO_LIMON >= personajeX && limonX <= personajeX + ANCHO_PERSONAJE){
         puntaje++;
-        mpstrarEnSpam("txtPuntaje", puntaje);
+        mostrarEnSpam("txtPuntaje", puntaje);
         aparecerLimon();
+        switch(puntaje){
+        case 3:
+            velocidadLimon = 150;
+            crearIntervaloLimon();
+            break;
+        case 6:
+            velocidadLimon = 100;
+            crearIntervaloLimon();
+            break;
+        case 9:
+            velocidadLimon = 50;
+            crearIntervaloLimon();
+            break;
+        case 10:
+            clearInterval(intervaloLimon);
+            alert("Ganaste! 🏆, tu puntaje es: " + puntaje);
+            location.reload();
+            break;
+        default:
+            break;
+        }
     }
 }
 
@@ -83,7 +109,7 @@ function detectarPiso(){
     if(limonY + ALTURA_LIMON >= canvas.height - alturaSuelo){
         aparecerLimon();
         vidas--;
-        mpstrarEnSpam("txtVida", vidas);
+        mostrarEnSpam("txtVida", vidas);
         if(vidas <= 0){
             alert("ya valio 😵, la limonada te quedo agria, tu puntaje es: " + puntaje);
             location.reload();
