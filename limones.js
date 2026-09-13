@@ -85,7 +85,7 @@ function detectarPiso(){
         vidas--;
         mpstrarEnSpam("txtVida", vidas);
         if(vidas <= 0){
-            alert("¡Juego terminado! Tu puntaje final es: " + puntaje);
+            alert("ya valio 😵, la limonada te quedo agria, tu puntaje es: " + puntaje);
             location.reload();
         }
     }
