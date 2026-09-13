@@ -122,3 +122,12 @@ function aparecerLimon(){
     limonY = 0;
     actualizarPantalla();
 }
+function reiniciarJuego(){
+    puntaje = 0;
+    vidas = 3;
+    velocidadLimon = 200;
+    mostrarEnSpam("txtPuntaje", puntaje);
+    mostrarEnSpam("txtVida", vidas);
+    aparecerLimon();
+    crearIntervaloLimon();
+}
