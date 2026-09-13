@@ -53,6 +53,7 @@ function actualizarPantalla(){
     dibujarSuelo();
     dibujarPersonaje();
     dibujarLimon();
+    detectarColision();
 }
 
 function limpiarPantalla(){
@@ -63,4 +64,11 @@ function limpiarPantalla(){
 function bajarLimon(){
     limonY += 5;
     actualizarPantalla();
+}
+
+function detectarColision(){
+    if(limonY + ALTURA_LIMON >= personajeY && limonX + ANCHO_LIMON >= personajeX && limonX <= personajeX + ANCHO_PERSONAJE){
+        puntaje++;
+        alert("Puntaje: " + puntaje);
+    }
 }
