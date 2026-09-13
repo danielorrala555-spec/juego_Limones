@@ -69,6 +69,12 @@ function bajarLimon(){
 function detectarColision(){
     if(limonY + ALTURA_LIMON >= personajeY && limonX + ANCHO_LIMON >= personajeX && limonX <= personajeX + ANCHO_PERSONAJE){
         puntaje++;
-        alert("Puntaje: " + puntaje);
+        aparecerLimon();
     }
+}
+
+function aparecerLimon(){
+    limonX = generarAleatorio(0, canvas.width - ANCHO_LIMON);
+    limonY = 0;
+    actualizarPantalla();
 }
