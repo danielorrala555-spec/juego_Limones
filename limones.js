@@ -1,16 +1,21 @@
 let canvas = document.getElementById("areaJuegos");
 let ctx = canvas.getContext("2d");
 
-let alturaSuelo = 50;
+let alturaSuelo = 30;
 let puntaje = 0;
-const ALTURA_PERSONAJE = 40;
-const ANCHO_PERSONAJE = 40;
+const ALTURA_PERSONAJE = 30;
+const ANCHO_PERSONAJE = 80;
+const ALTURA_LIMON = 30;
+const ANCHO_LIMON = 30;
 let personajeX = canvas.width / 2 - ANCHO_PERSONAJE / 2;
 let personajeY = canvas.height - alturaSuelo - ALTURA_PERSONAJE;
+let limonX = canvas.width / 2 - ANCHO_LIMON / 2;
+let limonY = 0;
 
 function iniciar(){
     dibujarSuelo();
     dibujarPersonaje();
+    dibujarLimon();
 }
 
 function dibujarSuelo(){
@@ -24,24 +29,38 @@ function dibujarPersonaje(){
     ctx.fillRect(personajeX, personajeY, ANCHO_PERSONAJE, ALTURA_PERSONAJE);
 }
 
+function dibujarLimon(){
+    ctx.fillStyle = "#f4e842";
+    ctx.fillRect(limonX, limonY, ANCHO_LIMON, ALTURA_LIMON);
+}
+
 function moverDerecha(){
+    if(personajeX + ANCHO_PERSONAJE < canvas.width){
     personajeX += 10;
     actualizarPantalla();
+    }
 }
 
 function moverIzquierda(){
-    personajeX -= 10;
-    actualizarPantalla();
+    if(personajeX > 0){
+        personajeX -= 10;
+        actualizarPantalla();
+    }
 }
 
 function actualizarPantalla(){
     limpiarPantalla();
     dibujarSuelo();
     dibujarPersonaje();
-
+    dibujarLimon();
 }
 
 function limpiarPantalla(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
+}
+
+function bajarLimon(){
+    limonY += 5;
+    actualizarPantalla();
 }
