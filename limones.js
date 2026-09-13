@@ -11,6 +11,7 @@ let personajeX = canvas.width / 2 - ANCHO_PERSONAJE / 2;
 let personajeY = canvas.height - alturaSuelo - ALTURA_PERSONAJE;
 let limonX = canvas.width / 2 - ANCHO_LIMON / 2;
 let limonY = 0;
+let vidas = 3;
 
 function iniciar(){
     dibujarSuelo();
@@ -53,7 +54,7 @@ function actualizarPantalla(){
     dibujarSuelo();
     dibujarPersonaje();
     dibujarLimon();
-    detectarColision();
+    
 }
 
 function limpiarPantalla(){
@@ -64,12 +65,27 @@ function limpiarPantalla(){
 function bajarLimon(){
     limonY += 5;
     actualizarPantalla();
+    detectarAtrapado();
+    detectarPiso();
 }
 
-function detectarColision(){
+function detectarAtrapado(){
     if(limonY + ALTURA_LIMON >= personajeY && limonX + ANCHO_LIMON >= personajeX && limonX <= personajeX + ANCHO_PERSONAJE){
         puntaje++;
+        mpstrarEnSpam("txtPuntaje", puntaje);
         aparecerLimon();
+    }
+}
+
+function detectarPiso(){
+    if(limonY + ALTURA_LIMON >= canvas.height - alturaSuelo){
+        aparecerLimon();
+        vidas--;
+        mpstrarEnSpam("txtVida", vidas);
+        if(vidas <= 0){
+            alert("¡Juego terminado! Tu puntaje final es: " + puntaje);
+            location.reload();
+        }
     }
 }
 
