@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Atrapar Limones</title>
+
+    <link rel="stylesheet" href="limones.css">
+</head>
+
+<body onload="iniciar()">
+
+    <main class="contenedor">
+
+        <header class="encabezado">
+            <p class="autor">DANIEL OR9 PRESENTA</p>
+
+            <h1>🍋 Atrapar Limones</h1>
+
+            <p class="descripcion">
+                Si del cielo te caen limones...
+                ¡atrápalos antes de que toquen el suelo!
+            </p>
+        </header>
+
+
+        <section class="panel">
+
+            <div class="tarjeta-estadistica">
+                <span class="etiqueta">PUNTAJE</span>
+                <span id="txtPuntaje">0</span>
+            </div>
+
+            <div class="tarjeta-estadistica">
+                <span class="etiqueta">VIDA</span>
+                <span id="txtVida">3</span>
+            </div>
+
+        </section>
+
+
+        <div class="zona-juego">
+
+            <canvas
+                id="areaJuegos"
+                width="600"
+                height="400">
+            </canvas>
+
+        </div>
+
+
+        <p class="instruccion">
+            ← Mueve el personaje y atrapa los limones →
+        </p>
+
+
+        <div class="botones">
+
+            <button
+                class="boton-control"
+                onclick="moverIzquierda()">
+                ←
+                <span>Izquierda</span>
+            </button>
+
+            <button
+                class="boton-control"
+                onclick="moverDerecha()">
+                →
+                <span>Derecha</span>
+            </button>
+
+        </div>
+
+
+        <button
+            class="boton-reiniciar"
+            onclick="reiniciarJuego()">
+            ↻ Reiniciar
+        </button>
+
+    </main>
+
+
+    <script src="limones.js"></script>
+    <script src="utils.js"></script>
+
+</body>
+
+</html>

@@ -27,7 +27,7 @@ function crearIntervaloLimon(){
 }
 
 function dibujarSuelo(){
-    ctx.fillStyle = "#519bc9";
+    ctx.fillStyle = "#5a347b";
     ctx.fillRect(0, canvas.height - alturaSuelo, canvas.width, alturaSuelo);
 }
 
