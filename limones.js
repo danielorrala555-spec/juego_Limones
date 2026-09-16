@@ -5,8 +5,8 @@ let alturaSuelo = 30;
 let puntaje = 0;
 const ALTURA_PERSONAJE = 30;
 const ANCHO_PERSONAJE = 80;
-const ALTURA_LIMON = 30;
-const ANCHO_LIMON = 30;
+const ALTURA_LIMON = 60;
+const ANCHO_LIMON = 60;
 let personajeX = canvas.width / 2 - ANCHO_PERSONAJE / 2;
 let personajeY = canvas.height - alturaSuelo - ALTURA_PERSONAJE;
 let limonX = canvas.width / 2 - ANCHO_LIMON / 2;
@@ -38,8 +38,12 @@ function dibujarPersonaje(){
 }
 
 function dibujarLimon(){
-    ctx.fillStyle = "#f4e842";
+    ctx.fillStyle = "#931dae";
     ctx.fillRect(limonX, limonY, ANCHO_LIMON, ALTURA_LIMON);
+}
+
+function desaparecerPersonaje(){
+    ctx.clearRect.dibujarPersonaje(personajeX, personajeY, ANCHO_PERSONAJE, ALTURA_PERSONAJE);
 }
 
 function moverDerecha(){
@@ -111,7 +115,7 @@ function detectarPiso(){
         vidas--;
         mostrarEnSpam("txtVida", vidas);
         if(vidas <= 0){
-            alert("ya valio 😵, la limonada te quedo agria, tu puntaje es: " + puntaje);
+            alert("suerte para la proxim, tu puntaje es: " + puntaje);
             location.reload();
         }
     }
