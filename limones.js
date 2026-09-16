@@ -42,9 +42,6 @@ function dibujarLimon(){
     ctx.fillRect(limonX, limonY, ANCHO_LIMON, ALTURA_LIMON);
 }
 
-function desaparecerPersonaje(){
-    ctx.clearRect.dibujarPersonaje(personajeX, personajeY, ANCHO_PERSONAJE, ALTURA_PERSONAJE);
-}
 
 function moverDerecha(){
     if(personajeX + ANCHO_PERSONAJE < canvas.width){

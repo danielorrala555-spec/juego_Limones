@@ -35,6 +35,36 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
+/* =========================
+   LOGO
+========================= */
+
+.logo-juego {
+    display: block;
+
+    width: 150px;
+    height: auto;
+
+    margin: 0 auto 12px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 0 5px rgb(88, 26, 26))
+        drop-shadow(0 0 12px rgb(12, 7, 2));
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.logo-juego:hover {
+    transform: scale(1.05);
+
+    filter:
+        drop-shadow(0 0 7px rgba(106, 22, 22, 0.4))
+        drop-shadow(0 0 18px rgba(191, 14, 14, 0.7));
+}
 
 
 /* =========================
@@ -417,6 +447,11 @@ button {
 ========================= */
 
 @media (max-width: 650px) {
+  /* ...lo que ya tienes... */
+
+    .logo-juego {
+        width: 115px;
+    }
 
     body {
         padding: 15px;
